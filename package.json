@@ -1,0 +1,14 @@
+{
+  "name": "node-basic",
+  "version": "1.0.0",
+  "description": "Basic node application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tony Sneed",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
