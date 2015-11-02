@@ -1,5 +1,5 @@
 {
-  "name": "node-basic",
+  "name": "node-get",
   "version": "1.0.0",
   "description": "Basic node application.",
   "main": "index.js",
@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.13.3",
-    "gulp": "^3.9.0"
+    "gulp": "^3.9.0",
+    "mongoose": "^4.2.3"
   }
 }

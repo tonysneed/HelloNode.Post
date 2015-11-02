@@ -15,7 +15,10 @@
       "commit": "ac5cd185d007f6aacd6eeaaecfb75dae3ff59553"
     },
     "node/node.d.ts": {
-      "commit": "ac5cd185d007f6aacd6eeaaecfb75dae3ff59553"
+      "commit": "c7002b7622c717d81ba4839d311f4f58a00746b4"
+    },
+    "mongoose/mongoose.d.ts": {
+      "commit": "c7002b7622c717d81ba4839d311f4f58a00746b4"
     }
   }
 }

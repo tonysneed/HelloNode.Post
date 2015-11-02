@@ -116,3 +116,102 @@
 	```shell
 	gulp
 	```
+	
+## Enable routing for HTTP get
+
+1. Add code to enable routing.
+
+	```js
+	var router = express.Router();
+	
+	router.route('/books')
+		.get(function(req, res){
+			var responseJson = {hello: "This is my api"};
+			res.json(responseJson);
+		});
+		
+	app.use('/api', router);
+	```
+
+2. Install mongoDB from https://www.mongodb.org.
+
+	```shell
+	brew install mongodb
+	```
+	
+3. Launch mongodb.
+
+	```shell
+	mongod --config /usr/local/etc/mongod.conf
+	```
+
+4. Import data from `booksJson.js`.
+
+	```shell
+	mongo booksdb < booksJson.js
+	```
+
+5. Install **Robomongo** and connect to mongodb.
+	- View the books collection.
+	
+6. Use `npm` to install `mongoose`.
+
+	```shell
+	npm install mongoose --save
+	```
+
+7. Use `tds` to add typings.
+
+	```shell
+	tsd install mongoose --save
+	```
+
+8. Add code to app.js to connect to the db using `mongoose`.
+
+	```js
+	var mongoose = require('mongoose');
+	var db = mongoose.connect('mongodb://localhost/booksdb');
+	```
+
+9. Reference `bookModel.js` and use it to query books.
+	- Install the Chrome extension: **JSONView**
+
+	```js
+	var query = {};
+	if(req.query.genre)
+	{
+		query.genre = req.query.genre;
+	}
+
+	book.find(query, function(err, books){
+		if(err)
+			res.status(500).send(err);
+		else
+			res.json(books);
+	})
+	```
+	
+	- Get all books:
+	http://localhost:8000/api/books
+
+	- Get books by genre:
+	http://localhost:8000/api/books?genre=Fantasy
+
+10. Add a router to find a book by id.
+
+	```js
+	router.route('/Books/:bookId')
+		.get(function (req, res) {
+	
+			book.findById(req.params.bookId, function (err, book) {
+				if (err)
+					res.status(500).send(err);
+				else
+					res.json(book);
+			});
+		});
+	```
+	
+	- Get all a book by id:
+	http://localhost:8000/api/books/563781b76dd01897d27b9a3c
+
