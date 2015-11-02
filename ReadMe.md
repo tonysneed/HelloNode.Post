@@ -12,13 +12,19 @@
 	npm install tsd -g
 	```
 
-3. Download `.gitignore` file.
+3. Install **gulp**.
+
+	```shell
+	npm install gulp -g
+	```
+
+4. Download `.gitignore` file.
 
 	```shell
 	curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore
 	```
 
-4. Add a `license.md` file.
+5. Add a `license.md` file.
 
 	- Paste license text: `http://choosealicense.com/licenses/mit`
 
@@ -70,3 +76,43 @@
 	
 	```
 	
+## Enable nodemon with gulp
+
+1. Install `gulp`.
+
+	```shell
+	node install gulp --save
+	```
+	
+2. Install `nodemon`.
+
+	```shell
+	npm install gulp-nodemon
+	```
+	
+3. Add `gulpfile.js` to the project with the following content:
+
+	```js
+	var gulp = require('gulp'),
+		nodemon = require('gulp-nodemon');
+	
+	gulp.task('default', function(){
+		nodemon({
+			script: 'app.js',
+			ext: 'js',
+			env: {
+				PORT:8000
+			},
+			ignore: ['./node_modules/**']
+		})
+		.on('restart', function(){
+			console.log('Restarting');
+		});
+	});
+	```
+	
+4. Run the app usin gulp.
+
+	```shell
+	gulp
+	```
