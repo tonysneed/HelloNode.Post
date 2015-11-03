@@ -1,5 +1,5 @@
 {
-  "name": "node-get",
+  "name": "node-post",
   "version": "1.0.0",
   "description": "Basic node application.",
   "main": "index.js",
